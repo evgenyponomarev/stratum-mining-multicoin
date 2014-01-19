@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4571199-a8a9-436f-87c8-fade544d8295" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/config.py" afterPath="$PROJECT_DIR$/conf/config.py" />
     </list>
     <ignored path="stratum-mining.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,19 +25,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="config.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="config.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/conf/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="87" column="21" selection-start="3088" selection-end="3088" vertical-scroll-proportion="0.0" vertical-offset="1498" max-vertical-offset="3798">
+            <state line="118" column="25" selection-start="4065" selection-end="4071" vertical-scroll-proportion="0.27450982" vertical-offset="1984" max-vertical-offset="3798">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="0" selection-start="6" selection-end="6" vertical-scroll-proportion="0.034416825" vertical-offset="0" max-vertical-offset="523">
+            <state line="3" column="0" selection-start="16" selection-end="16" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="162">
               <folding />
             </state>
           </provider>
@@ -141,8 +141,8 @@
         <option value="$PROJECT_DIR$/lib/bitcoin_rpc.py" />
         <option value="$PROJECT_DIR$/lib/bitcoin_rpc_manager.py" />
         <option value="$PROJECT_DIR$/mining/__init__.py" />
-        <option value="$PROJECT_DIR$/conf/config.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/conf/config.py" />
       </list>
     </option>
   </component>
@@ -494,16 +494,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/conf/config.py">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="87" column="21" selection-start="3088" selection-end="3088" vertical-scroll-proportion="0.0" vertical-offset="1498" max-vertical-offset="3798">
+        <state line="3" column="0" selection-start="16" selection-end="16" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="162">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/conf/config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="6" selection-end="6" vertical-scroll-proportion="0.034416825" vertical-offset="0" max-vertical-offset="523">
+        <state line="118" column="25" selection-start="4065" selection-end="4071" vertical-scroll-proportion="0.27450982" vertical-offset="1984" max-vertical-offset="3798">
           <folding />
         </state>
       </provider>

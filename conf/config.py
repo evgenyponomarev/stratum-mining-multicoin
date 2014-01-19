@@ -116,7 +116,7 @@ DB_PGSQL_PASS = '**empty**'
 DB_PGSQL_SCHEMA = 'public'
 # MySQL
 DB_MYSQL_HOST = 'localhost'
-DB_MYSQL_DBNAME = 'pool'
+DB_MYSQL_DBNAME = 'pooldb'
 DB_MYSQL_USER = 'root'
 DB_MYSQL_PASS = 'dtnthdujkjdt'
 DB_MYSQL_PORT = 3306		# Default port for MySQL
