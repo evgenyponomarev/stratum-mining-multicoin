@@ -21,7 +21,7 @@ COINDAEMON_WALLETS = {
         'wallet': 'LX2NaYzhmTMm2Kzo5syuS4E8arNB6Wd8kf',
         'hosts': [{
             'host': 'localhost',
-            'port': 8332,
+            'port': 19334,
             'user': 'litecoinrpc',
             'password': 'FtrHtYKaY9hSKdpBWK3SRC4RsD2FSYrp391heQZw1DHP'
         }]
