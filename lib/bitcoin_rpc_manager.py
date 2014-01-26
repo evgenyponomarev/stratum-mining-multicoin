@@ -69,7 +69,7 @@ class BitcoinRPCManager(object):
                 self.next_connection(wallet)
         curr_height = json.loads(resp)['result']['blocks']
         log.debug("Check Height -- Current Pool %i : %i" % (self.curr_conn, curr_height))
-        for i in self.conns[wallet]:
+        for i, conn in enumerate(self.conns[wallet]):
             if i == self.curr_conn:
                 continue
 

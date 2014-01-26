@@ -83,34 +83,45 @@ def setup(on_startup):
                         reactor.stop()
             time.sleep(1)  # If we didn't get a result or the connect failed
         
-            log.info('Connected to the coind - Begining to load Address and Module Checks!')
+        log.info('Connected to the coind - Begining to load Address and Module Checks!')
 
-            # Start the coinbaser
-            coinbaser = SimpleCoinbaser(bitcoin_rpc, wallet)
-            (yield coinbaser.on_load)
-    
-            registry = TemplateRegistry(wallet,
-                                        BlockTemplate,
-                                        coinbaser,
-                                        bitcoin_rpc,
-                                        getattr(settings, 'INSTANCE_ID'),
-                                        MiningSubscription.on_template,
-                                        Interfaces.share_manager.on_network_block)
-    
-            # Template registry is the main interface between Stratum service
-            # and pool core logic
-            Interfaces.set_template_registry(registry)
-    
-            # Set up polling mechanism for detecting new block on the network
-            # This is just failsafe solution when -blocknotify
-            # mechanism is not working properly
-            BlockUpdater(wallet, registry, bitcoin_rpc)
+        # Start the coinbaser
+        coinbaser = SimpleCoinbaser(bitcoin_rpc, wallet)
+        log.info('Starting registry')
+        (yield coinbaser.on_load)
 
-            prune_thr = threading.Thread(target=WorkLogPruner, args=(Interfaces.worker_manager.job_log,))
-            prune_thr.daemon = True
-            prune_thr.start()
+        log.info('Starting registry')
+    
+        registry = TemplateRegistry(wallet,
+                                    BlockTemplate,
+                                    coinbaser,
+                                    bitcoin_rpc,
+                                    getattr(settings, 'INSTANCE_ID'),
+                                    MiningSubscription.on_template,
+                                    Interfaces.share_manager.on_network_block)
 
-            on_startup.callback(True)
+        log.info('Set template registry')
+
+        # Template registry is the main interface between Stratum service
+        # and pool core logic
+        Interfaces.set_template_registry(registry)
+
+        log.info('Block updater')
+
+        # Set up polling mechanism for detecting new block on the network
+        # This is just failsafe solution when -blocknotify
+        # mechanism is not working properly
+        BlockUpdater(wallet, registry, bitcoin_rpc)
+
+        log.info('Threading thread')
+
+        prune_thr = threading.Thread(target=WorkLogPruner, args=(Interfaces.worker_manager.job_log,))
+        prune_thr.daemon = True
+        prune_thr.start()
+
+        log.info('On startup callback')
+
+        on_startup.callback(True)
     
     log.info("MINING SERVICE IS READY")
 

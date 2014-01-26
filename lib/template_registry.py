@@ -53,6 +53,7 @@ class TemplateRegistry(object):
         log.debug("Got to Template Registry")
         self.coinbaser = coinbaser
         self.block_template_class = block_template_class
+        self.wallet = wallet
         self.bitcoin_rpc = bitcoin_rpc
         self.on_block_callback = on_block_callback
         self.on_template_callback = on_template_callback
@@ -129,7 +130,7 @@ class TemplateRegistry(object):
         self.update_in_progress = True
         self.last_update = Interfaces.timestamper.time()
 
-        d = self.bitcoin_rpc.getblocktemplate(wallet)
+        d = self.bitcoin_rpc.getblocktemplate(self.wallet)
         d.addCallback(self._update_block)
         d.addErrback(self._update_block_failed)
 
@@ -138,6 +139,7 @@ class TemplateRegistry(object):
         self.update_in_progress = False
 
     def _update_block(self, data):
+        log.info("_Update block")
         start = Interfaces.timestamper.time()
 
         template = self.block_template_class(Interfaces.timestamper, self.coinbaser, JobIdGenerator.get_new_id())
@@ -292,9 +294,9 @@ class TemplateRegistry(object):
             # 7. Submit block to the network
             serialized = binascii.hexlify(job.serialize())
             if settings.BLOCK_CHECK_SCRYPT_HASH:
-                on_submit = self.bitcoin_rpc.submitblock(wallet, serialized, scrypt_hash_hex)
+                on_submit = self.bitcoin_rpc.submitblock(self.wallet, serialized, scrypt_hash_hex)
             else:
-                on_submit = self.bitcoin_rpc.submitblock(wallet, serialized, block_hash_hex)
+                on_submit = self.bitcoin_rpc.submitblock(self.wallet, serialized, block_hash_hex)
             if on_submit:
                 self.update_block()
 

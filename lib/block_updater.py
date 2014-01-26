@@ -28,9 +28,9 @@ class BlockUpdater(object):
 
     def schedule(self):
         when = self._get_next_time()
-        log.debug("Next prevhash update in %.03f sec" % when)
-        log.debug("Merkle update in next %.03f sec" % \
-                  ((self.registry.last_update + settings.MERKLE_REFRESH_INTERVAL) - Interfaces.timestamper.time()))
+        log.debug("Next prevhash update %s in %.03f sec" % (self.wallet, when))
+        log.debug("Merkle update %s in next %.03f sec" % \
+                  (self.wallet, (self.registry.last_update + settings.MERKLE_REFRESH_INTERVAL) - Interfaces.timestamper.time()))
         self.clock = reactor.callLater(when, self.run)
 
     def _get_next_time(self):
@@ -48,14 +48,14 @@ class BlockUpdater(object):
             else:
                 current_prevhash = None
 
-            log.info("Checking for new block.")
+            log.info("Checking %s for new block." % self.wallet)
             prevhash = util.reverse_hash((yield self.bitcoin_rpc.prevhash(self.wallet)))
             if prevhash and prevhash != current_prevhash:
-                log.info("New block! Prevhash: %s" % prevhash)
+                log.info("New block %s! Prevhash: %s" % (self.wallet, prevhash))
                 update = True
 
             elif Interfaces.timestamper.time() - self.registry.last_update >= settings.MERKLE_REFRESH_INTERVAL:
-                log.info("Merkle update! Prevhash: %s" % prevhash)
+                log.info("Merkle update %s! Prevhash: %s" % (self.wallet, prevhash))
                 update = True
 
             if update:

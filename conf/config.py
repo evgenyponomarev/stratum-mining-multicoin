@@ -17,15 +17,25 @@ You NEED to set the parameters in BASIC SETTINGS
 #COINDAEMON_TRUSTED_PASSWORD = 'FtrHtYKaY9hSKdpBWK3SRC4RsD2FSYrp391heQZw1DHP'
 
 COINDAEMON_WALLETS = {
+    'alc': {
+        'wallet': 'AStYhybeX7vJbz5fvsUHMjKhmXsTbotqwS',
+        'hosts': [{
+            'host': 'localhost',
+            'port': 55555,
+            'user': 'alcohoinrpc',
+            'password': '8Wbbi6ExSWujz3ByGz8LGqDWehaGXw8EEcJCtWNceyCG'
+        }]
+    },
     'ltc': {
         'wallet': 'LX2NaYzhmTMm2Kzo5syuS4E8arNB6Wd8kf',
         'hosts': [{
             'host': 'localhost',
-            'port': 19334,
+            'port': 8332,
             'user': 'litecoinrpc',
             'password': 'FtrHtYKaY9hSKdpBWK3SRC4RsD2FSYrp391heQZw1DHP'
         }]
     }
+
 }
 
 # Coin Algorithm is the option used to determine the algortithm used by stratum
@@ -116,7 +126,7 @@ DB_PGSQL_PASS = '**empty**'
 DB_PGSQL_SCHEMA = 'public'
 # MySQL
 DB_MYSQL_HOST = 'localhost'
-DB_MYSQL_DBNAME = 'pooldb'
+DB_MYSQL_DBNAME = 'pool'
 DB_MYSQL_USER = 'root'
 DB_MYSQL_PASS = 'dtnthdujkjdt'
 DB_MYSQL_PORT = 3306		# Default port for MySQL
