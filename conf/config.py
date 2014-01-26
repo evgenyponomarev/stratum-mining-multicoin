@@ -120,15 +120,15 @@ DATABASE_EXTEND = False          # SQLite and PGSQL Only!
 DB_SQLITE_FILE = 'pooldb.sqlite'
 # Postgresql
 DB_PGSQL_HOST = 'localhost'
-DB_PGSQL_DBNAME = 'pooldb'
-DB_PGSQL_USER = 'pooldb'
-DB_PGSQL_PASS = '**empty**'
+DB_PGSQL_DBNAME = ''
+DB_PGSQL_USER = ''
+DB_PGSQL_PASS = ''
 DB_PGSQL_SCHEMA = 'public'
 # MySQL
 DB_MYSQL_HOST = 'localhost'
-DB_MYSQL_DBNAME = 'pool'
-DB_MYSQL_USER = 'root'
-DB_MYSQL_PASS = 'dtnthdujkjdt'
+DB_MYSQL_DBNAME = 'pooldb'
+DB_MYSQL_USER = 'pooldb'
+DB_MYSQL_PASS = '5zygZNHP4GuK32HeGh8zGRoLMbL2mGhm'
 DB_MYSQL_PORT = 3306		# Default port for MySQL
 
 # ******************** Adv. DB Settings *********************
