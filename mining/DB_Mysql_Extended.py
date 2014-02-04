@@ -101,7 +101,7 @@ class DB_Mysql_Extended(DB_Mysql.DB_Mysql):
         self.execute(
             """
             INSERT INTO `shares_archive`
-            SELECT s.`id`, s.`time`, s.`rem_host`, pw.`id`, s.`our_result`, 
+            SELECT s.`id`, s.`coin`, s.`time`, s.`rem_host`, pw.`id`, s.`our_result`,
               s.`upstream_result`, s.`reason`, s.`solution`, s.`block_num`, 
               s.`prev_block_hash`, s.`useragent`, s.`difficulty`
             FROM `shares` s 
@@ -156,6 +156,7 @@ class DB_Mysql_Extended(DB_Mysql.DB_Mysql):
         # 8: self.prev_hash,
         # 9: invalid_reason, 
         # 10: share_diff
+        # 11: coin
 
         log.debug("Importing Shares")
         checkin_times = {}
@@ -188,12 +189,12 @@ class DB_Mysql_Extended(DB_Mysql.DB_Mysql):
                 INSERT INTO `shares` 
                 (time, rem_host, worker, our_result, upstream_result, 
                   reason, solution, block_num, prev_block_hash, 
-                  useragent, difficulty) 
+                  useragent, difficulty, coin)
                 VALUES
                 (FROM_UNIXTIME(%(time)s), %(host)s, 
                   (SELECT `id` FROM `pool_worker` WHERE `username` = %(uname)s),
                   %(lres)s, 0, %(reason)s, %(solution)s, 
-                  %(blocknum)s, %(hash)s, '', %(difficulty)s)
+                  %(blocknum)s, %(hash)s, '', %(difficulty)s, %(coin)s)
                 """,
                 {
                     "time": v[4],
@@ -204,7 +205,8 @@ class DB_Mysql_Extended(DB_Mysql.DB_Mysql):
                     "solution": v[2],
                     "blocknum": v[7],
                     "hash": v[8],
-                    "difficulty": v[3]
+                    "difficulty": v[3],
+                    "coin": v[11]
                 }
             )
 

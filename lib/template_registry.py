@@ -63,6 +63,7 @@ class TemplateRegistry(object):
         self.last_update = None
 
         # Create first block template on startup
+        log.debug("Create first block template on startup")
         self.update_block()
 
     def get_new_extranonce1(self):
@@ -113,7 +114,7 @@ class TemplateRegistry(object):
             self.on_block_callback(prevhash, block_height)
 
         # Everything is ready, let's broadcast jobs!
-        self.on_template_callback(new_block)
+        self.on_template_callback(self.wallet, new_block)
 
 
         #from twisted.internet import reactor
@@ -262,6 +263,8 @@ class TemplateRegistry(object):
 
         target_user = self.diff_to_target(difficulty)
         if hash_int > target_user:
+            log.debug(hash_int)
+            log.debug(target_user)
             raise SubmitException("Share is above target")
 
         # Mostly for debugging purposes

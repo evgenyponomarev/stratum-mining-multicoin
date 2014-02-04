@@ -17,7 +17,7 @@ You NEED to set the parameters in BASIC SETTINGS
 #COINDAEMON_TRUSTED_PASSWORD = 'FtrHtYKaY9hSKdpBWK3SRC4RsD2FSYrp391heQZw1DHP'
 
 COINDAEMON_WALLETS = {
-    'alc': {
+    'ALC': {
         'wallet': 'AStYhybeX7vJbz5fvsUHMjKhmXsTbotqwS',
         'hosts': [{
             'host': 'localhost',
@@ -26,7 +26,7 @@ COINDAEMON_WALLETS = {
             'password': '8Wbbi6ExSWujz3ByGz8LGqDWehaGXw8EEcJCtWNceyCG'
         }]
     },
-    'ltc': {
+    'LTC': {
         'wallet': 'LX2NaYzhmTMm2Kzo5syuS4E8arNB6Wd8kf',
         'hosts': [{
             'host': 'localhost',
@@ -168,7 +168,7 @@ VDIFF_X2_TYPE = True  # powers of 2 e.g. 2,4,8,16,32,64,128,256,512,1024
 VDIFF_FLOAT = False    # Use float difficulty
 
 # Pool Target (Base Difficulty)
-POOL_TARGET = 32                        # Pool-wide difficulty target int >= 1
+POOL_TARGET = 1                        # Pool-wide difficulty target int >= 1
 
 # Variable Difficulty Enable
 VARIABLE_DIFF = True                # Master variable difficulty enable

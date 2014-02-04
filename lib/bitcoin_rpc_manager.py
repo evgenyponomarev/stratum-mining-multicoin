@@ -50,10 +50,10 @@ class BitcoinRPCManager(object):
     def next_connection(self, wallet):
         time.sleep(1)
         if len(self.conns[self.curr_wallet]) <= 1:
-            log.error("Problem with Pool 0 -- NO ALTERNATE POOLS!!!")
+            log.error("Problem with Pool %s 0 -- NO ALTERNATE POOLS!!!", wallet)
             time.sleep(4)
             return
-        log.error("Problem with Pool %i Switching to Next!" % (self.curr_conn))
+        log.error("Problem with Pool %s %i Switching to Next!" % (wallet, self.curr_conn))
         self.curr_conn = self.curr_conn + 1
         if self.curr_conn >= len(self.conns[wallet]):
             self.curr_conn = 0
@@ -65,10 +65,10 @@ class BitcoinRPCManager(object):
                 resp = (yield self.conns[wallet][self.curr_conn]._call('getinfo', []))
                 break
             except:
-                log.error("Check Height -- Pool %i Down!" % (self.curr_conn))
+                log.error("Check Height -- Pool %s %i Down!" % (wallet, self.curr_conn))
                 self.next_connection(wallet)
         curr_height = json.loads(resp)['result']['blocks']
-        log.debug("Check Height -- Current Pool %i : %i" % (self.curr_conn, curr_height))
+        log.debug("Check Height -- Current Pool %s %i : %i" % (wallet, self.curr_conn, curr_height))
         for i, conn in enumerate(self.conns[wallet]):
             if i == self.curr_conn:
                 continue
@@ -76,11 +76,11 @@ class BitcoinRPCManager(object):
             try:
                 resp = (yield self.conns[wallet][i]._call('getinfo', []))
             except:
-                log.error("Check Height -- Pool %i Down!" % (i,))
+                log.error("Check Height -- Pool %s %i Down!" % (wallet, i))
                 continue
 
             height = json.loads(resp)['result']['blocks']
-            log.debug("Check Height -- Pool %i : %i" % (i, height))
+            log.debug("Check Height -- Pool %s %i : %i" % (wallet, i, height))
             if height > curr_height:
                 self.curr_conn = i
         defer.returnValue(True)

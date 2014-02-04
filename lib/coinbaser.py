@@ -23,6 +23,7 @@ class SimpleCoinbaser(object):
         self.is_valid = False
 
         self.bitcoin_rpc = bitcoin_rpc
+        log.debug("Initialize validate wallet %s" % wallet)
         self._validate()
 
     def _validate(self):
@@ -92,6 +93,7 @@ class SimpleCoinbaser(object):
 
     def get_script_pubkey(self):
         if settings.COINDAEMON_Reward == 'POW':
+            log.debug("Initialize validate wallet %s" % self.wallet)
             self._validate()
             return util.script_to_address(self.address)
         else:

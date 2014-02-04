@@ -26,6 +26,9 @@ class WorkerManagerInterface(object):
         self.job_log.setdefault('None', {})
         return
 
+    def get_worker_coin(self, worker_name):
+        return dbi.get_worker_coin(worker_name)
+
     def authorize(self, worker_name, worker_password):
         # Important NOTE: This is called on EVERY submitted share. So you'll need caching!!!
         return dbi.check_password(worker_name, worker_password)
@@ -59,7 +62,7 @@ class WorkIdGenerator(object):
 class ShareLimiterInterface(object):
     '''Implement difficulty adjustments here'''
 
-    def submit(self, connection_ref, job_id, current_difficulty, timestamp, worker_name):
+    def submit(self, wallet, connection_ref, job_id, current_difficulty, timestamp, worker_name):
         '''connection - weak reference to Protocol instance
            current_difficulty - difficulty of the connection
            timestamp - submission time of current share
@@ -82,17 +85,17 @@ class ShareManagerInterface(object):
         pass
 
     def on_submit_share(self, worker_name, block_header, block_hash, difficulty, timestamp, is_valid, ip,
-                        invalid_reason, share_diff):
+                        invalid_reason, share_diff, wallet):
         log.debug("%s (%s) %s %s" % (block_hash, share_diff, 'valid' if is_valid else 'INVALID', worker_name))
         dbi.queue_share([worker_name, block_header, block_hash, difficulty, timestamp, is_valid, ip, self.block_height,
                          self.prev_hash,
-                         invalid_reason, share_diff])
+                         invalid_reason, share_diff, wallet])
 
-    def on_submit_block(self, is_accepted, worker_name, block_header, block_hash, timestamp, ip, share_diff):
+    def on_submit_block(self, is_accepted, worker_name, block_header, block_hash, timestamp, ip, share_diff, wallet):
         log.info("Block %s %s" % (block_hash, 'ACCEPTED' if is_accepted else 'REJECTED'))
         dbi.found_block(
             [worker_name, block_header, block_hash, -1, timestamp, is_accepted, ip, self.block_height, self.prev_hash,
-             share_diff])
+             share_diff, wallet])
 
 
 class TimestamperInterface(object):
@@ -118,7 +121,8 @@ class Interfaces(object):
     share_manager = None
     share_limiter = None
     timestamper = None
-    template_registry = None
+    #template_registry = None
+    template_registries = {}
 
     @classmethod
     def set_worker_manager(cls, manager):
@@ -136,7 +140,11 @@ class Interfaces(object):
     def set_timestamper(cls, manager):
         cls.timestamper = manager
 
+    # @classmethod
+    # def set_template_registry(cls, registry):
+    #     dbi.set_bitcoinrpc(registry.bitcoin_rpc)
+    #     cls.template_registry = registry
+
     @classmethod
-    def set_template_registry(cls, registry):
-        dbi.set_bitcoinrpc(registry.bitcoin_rpc)
-        cls.template_registry = registry
+    def add_template_registry(cls, wallet, registry):
+        cls.template_registries[wallet] = registry

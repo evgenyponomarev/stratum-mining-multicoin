@@ -65,6 +65,7 @@ class DB_Mysql():
         # 8: self.prev_hash,
         # 9: invalid_reason, 
         # 10: share_diff
+        # 11: coin
 
         log.debug("Importing Shares")
         checkin_times = {}
@@ -82,11 +83,11 @@ class DB_Mysql():
                 """
                 INSERT INTO `shares`
                 (time, rem_host, username, our_result, 
-                  upstream_result, reason, solution, difficulty)
+                  upstream_result, reason, solution, difficulty, coin)
                 VALUES 
                 (FROM_UNIXTIME(%(time)s), %(host)s, 
                   %(uname)s, 
-                  %(lres)s, 'N', %(reason)s, %(solution)s, %(difficulty)s)
+                  %(lres)s, 'N', %(reason)s, %(solution)s, %(difficulty)s, %(coin)s)
                 """,
                 {
                     "time": v[4], 
@@ -95,7 +96,8 @@ class DB_Mysql():
                     "lres": v[5], 
                     "reason": v[9],
                     "solution": v[2],
-                    "difficulty": v[3]
+                    "difficulty": v[3],
+                    "coin": v[11]
                 }
             )
 
@@ -152,7 +154,7 @@ class DB_Mysql():
                 VALUES 
                 (FROM_UNIXTIME(%(time)s), %(host)s, 
                   %(uname)s, 
-                  %(lres)s, %(result)s, %(reason)s, %(solution)s)
+                  %(lres)s, %(result)s, %(reason)s, %(solution)s, %(coin)s)
                 """,
                 {
                     "time": v[4], 
@@ -161,7 +163,8 @@ class DB_Mysql():
                     "lres": v[5], 
                     "result": v[5], 
                     "reason": v[9],
-                    "solution": v[2]
+                    "solution": v[2],
+                    "coin": v[11]
                 }
             )
 
@@ -298,6 +301,21 @@ class DB_Mysql():
             return True
         
         return False
+
+    def get_worker_coin(self, worker_name):
+        self.execute(
+            """
+            SELECT `coin`
+            FROM `pool_worker`
+            WHERE `username` = %(uname)s
+            """,
+            {
+                "uname": worker_name
+            }
+        )
+
+        data = self.dbc.fetchone()
+        return data[0]
 
     def get_workers_stats(self):
         self.execute(

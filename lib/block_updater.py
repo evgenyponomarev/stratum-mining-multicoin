@@ -59,6 +59,7 @@ class BlockUpdater(object):
                 update = True
 
             if update:
+                log.debug("Update block in block_updater, wallet %s" % self.wallet)
                 self.registry.update_block()
 
         except Exception:

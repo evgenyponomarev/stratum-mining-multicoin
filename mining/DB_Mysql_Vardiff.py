@@ -24,6 +24,7 @@ class DB_Mysql_Vardiff(DB_Mysql.DB_Mysql):
         # 8: self.prev_hash,
         # 9: invalid_reason, 
         # 10: share_diff
+        # 11: coin
 
         log.debug("Importing Shares")
         checkin_times = {}
@@ -41,11 +42,11 @@ class DB_Mysql_Vardiff(DB_Mysql.DB_Mysql):
                 """
                 INSERT INTO `shares`
                 (time, rem_host, username, our_result, 
-                  upstream_result, reason, solution, difficulty)
+                  upstream_result, reason, solution, difficulty, coin)
                 VALUES 
                 (FROM_UNIXTIME(%(time)s), %(host)s, 
                   %(uname)s, 
-                  %(lres)s, 'N', %(reason)s, %(solution)s, %(difficulty)s)
+                  %(lres)s, 'N', %(reason)s, %(solution)s, %(difficulty)s, %(coin)s)
                 """,
                 {
                     "time": v[4], 
@@ -54,7 +55,8 @@ class DB_Mysql_Vardiff(DB_Mysql.DB_Mysql):
                     "lres": v[5], 
                     "reason": v[9],
                     "solution": v[2],
-                    "difficulty": v[3]
+                    "difficulty": v[3],
+                    "coin": v[11]
                 }
             )
 

@@ -1,5 +1,6 @@
 import binascii
 from twisted.internet import defer
+import pprint
 
 import lib.settings as settings
 from stratum.services import GenericService, admin
@@ -46,23 +47,23 @@ class MiningService(GenericService):
         return '%s' % serialized
 
     @admin
-    def update_block(self):
+    def update_block(self, *args):
         '''Connect this RPC call to 'litecoind -blocknotify' for 
         instant notification about new block on the network.
         See blocknotify.sh in /scripts/ for more info.'''
         
         log.info("New block notification received")
-        Interfaces.template_registry.update_block()
+        Interfaces.template_registries[args[0]].update_block()
         return True 
 
     @admin
     def add_litecoind(self, *args):
         ''' Function to add a litecoind instance live '''
-        if len(args) != 4:
+        if len(args) != 5:
             raise SubmitException("Incorrect number of parameters sent")
 
         #(host, port, user, password) = args
-        Interfaces.template_registry.bitcoin_rpc.add_connection(args[0], args[1], args[2], args[3])
+        Interfaces.template_registries[args[4]].bitcoin_rpc.add_connection(args[4], args[0], args[1], args[2], args[3])
         log.info("New litecoind connection added %s:%s" % (args[0], args[1]))
         return True 
     
@@ -99,15 +100,24 @@ class MiningService(GenericService):
     def subscribe(self, *args):
         '''Subscribe for receiving mining jobs. This will
         return subscription details, extranonce1_hex and extranonce2_size'''
-        
-        extranonce1 = Interfaces.template_registry.get_new_extranonce1()
-        extranonce2_size = Interfaces.template_registry.extranonce2_size
-        extranonce1_hex = binascii.hexlify(extranonce1)
-        
+
         session = self.connection_ref().get_session()
+
+        for i in Interfaces.template_registries.items():
+            print "Template registries:"
+            print i
+
+        registry = Interfaces.template_registries[Interfaces.template_registries.keys()[0]]
+        extranonce1 = registry.get_new_extranonce1()
+        extranonce2_size = registry.extranonce2_size
+        extranonce1_hex = binascii.hexlify(extranonce1)
+
         session['extranonce1'] = extranonce1
         session['difficulty'] = settings.POOL_TARGET  # Following protocol specs, default diff is 1
-        return Pubsub.subscribe(self.connection_ref(), MiningSubscription()) + (extranonce1_hex, extranonce2_size)
+
+        mining_subscription = MiningSubscription()
+        #mining_subscription.wallet = 'ALC'
+        return Pubsub.subscribe(self.connection_ref(), mining_subscription) + (extranonce1_hex, extranonce2_size)
         
     def submit(self, worker_name, work_id, extranonce2, ntime, nonce):
         '''Try to solve block candidate using given parameters.'''
@@ -118,6 +128,9 @@ class MiningService(GenericService):
         # Check if worker is authorized to submit shares
         if not Interfaces.worker_manager.authorize(worker_name, session['authorized'].get(worker_name)):
             raise SubmitException("Worker is not authorized")
+
+        #get worker coin
+        wallet = Interfaces.worker_manager.get_worker_coin(worker_name)
 
         # Check if extranonce1 is in connection session
         extranonce1_bin = session.get('extranonce1', None)
@@ -158,12 +171,12 @@ class MiningService(GenericService):
 
         log.debug("%s (%d, %d, %s, %s, %d) %0.2f%% work_id(%s) job_id(%s) diff(%f)" % (worker_name, valid, invalid, is_banned, is_ext_diff, last_ts, percent, work_id, job_id, difficulty))
         if not is_ext_diff:    
-            Interfaces.share_limiter.submit(self.connection_ref, job_id, difficulty, submit_time, worker_name)
+            Interfaces.share_limiter.submit(wallet, self.connection_ref, job_id, difficulty, submit_time, worker_name)
             
         # This checks if submitted share meet all requirements
         # and it is valid proof of work.
         try:
-            (block_header, block_hash, share_diff, on_submit) = Interfaces.template_registry.submit_share(job_id,
+            (block_header, block_hash, share_diff, on_submit) = Interfaces.template_registries[wallet].submit_share(job_id,
                 worker_name, session, extranonce1_bin, extranonce2, ntime, nonce, difficulty)
         except SubmitException as e:
             # block_header and block_hash are None when submitted data are corrupted
@@ -172,9 +185,11 @@ class MiningService(GenericService):
 
             if is_banned:
                 raise SubmitException("Worker is temporarily banned")
- 
+
+            log.debug("got SubmitException: ")
+            log.debug(e)
             Interfaces.share_manager.on_submit_share(worker_name, False, False, difficulty,
-                submit_time, False, ip, e[0], 0)   
+                submit_time, False, ip, e[0], 0, wallet)
             raise
 
         valid += 1
@@ -184,13 +199,13 @@ class MiningService(GenericService):
             raise SubmitException("Worker is temporarily banned")
  
         Interfaces.share_manager.on_submit_share(worker_name, block_header,
-            block_hash, difficulty, submit_time, True, ip, '', share_diff)
+            block_hash, difficulty, submit_time, True, ip, '', share_diff, wallet)
 
         if on_submit != None:
             # Pool performs submitblock() to litecoind. Let's hook
             # to result and report it to share manager
             on_submit.addCallback(Interfaces.share_manager.on_submit_block,
-                worker_name, block_header, block_hash, submit_time, ip, share_diff)
+                worker_name, block_header, block_hash, submit_time, ip, share_diff, wallet)
 
         return True
             
