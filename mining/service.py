@@ -80,13 +80,18 @@ class MiningService(GenericService):
         session.setdefault('authorized', {})
         
         if Interfaces.worker_manager.authorize(worker_name, worker_password):
+            #get worker coin
+            session['wallet'] = Interfaces.worker_manager.get_worker_coin(worker_name)
+
             session['authorized'][worker_name] = worker_password
             is_ext_diff = False
             if settings.ALLOW_EXTERNAL_DIFFICULTY:
                 (is_ext_diff, session['difficulty']) = Interfaces.worker_manager.get_user_difficulty(worker_name)
                 self.connection_ref().rpc('mining.set_difficulty', [session['difficulty'], ], is_notification=True)
+                log.debug("Setting difficulty %d to users dif " % session['difficulty'])
             else:
                 session['difficulty'] = settings.POOL_TARGET
+                log.debug("Setting difficulty to pool target %d" % session['difficulty'])
             # worker_log = (valid, invalid, is_banned, diff, is_ext_diff, timestamp)
             Interfaces.worker_manager.worker_log['authorized'][worker_name] = (0, 0, False, session['difficulty'], is_ext_diff, Interfaces.timestamper.time())            
             return True
@@ -103,11 +108,8 @@ class MiningService(GenericService):
 
         session = self.connection_ref().get_session()
 
-        for i in Interfaces.template_registries.items():
-            print "Template registries:"
-            print i
-
-        registry = Interfaces.template_registries[Interfaces.template_registries.keys()[0]]
+        #registry = Interfaces.template_registries[Interfaces.template_registries.keys()[0]]
+        registry = Interfaces.template_registries['ALC']
         extranonce1 = registry.get_new_extranonce1()
         extranonce2_size = registry.extranonce2_size
         extranonce1_hex = binascii.hexlify(extranonce1)
@@ -140,13 +142,15 @@ class MiningService(GenericService):
         
         # Get current block job_id
         difficulty = session['difficulty']
+        log.debug("Submit share difficulty %d" % difficulty)
         if worker_name in Interfaces.worker_manager.job_log and work_id in Interfaces.worker_manager.job_log[worker_name]:
             (job_id, difficulty, job_ts) = Interfaces.worker_manager.job_log[worker_name][work_id]
+            log.debug("Worker log job id %s work id %s difficulty %d" % (job_id, work_id, difficulty))
         else:
             job_ts = Interfaces.timestamper.time()
             Interfaces.worker_manager.job_log.setdefault(worker_name, {})[work_id] = (work_id, difficulty, job_ts)
             job_id = work_id
-        #log.debug("worker_job_log: %s" % repr(Interfaces.worker_manager.job_log))
+        log.debug("worker_job_log: %s" % repr(Interfaces.worker_manager.job_log))
 
         submit_time = Interfaces.timestamper.time()
         ip = self.connection_ref()._get_ip()

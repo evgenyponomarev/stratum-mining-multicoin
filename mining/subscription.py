@@ -33,6 +33,8 @@ class MiningSubscription(Subscription):
                         worker_name = session['authorized'].keys()[0]
                         difficulty = session['difficulty']
 
+                        log.debug("On template diff %d" % difficulty)
+
                         worker_wallet = Interfaces.worker_manager.get_worker_coin(worker_name)
                         if(wallet == worker_wallet):
                             work_id = Interfaces.worker_manager.register_work(worker_name, job_id, difficulty)
@@ -50,9 +52,16 @@ class MiningSubscription(Subscription):
         
         cnt = Pubsub.get_subscription_count(cls.event)
         log.info("BROADCASTED to %d connections in %.03f sec" % (cnt, (Interfaces.timestamper.time() - start)))
-        
+
     def _finish_after_subscribe(self, result):
+        self.connection_ref().rpc('mining.set_difficulty', [settings.POOL_TARGET, ], is_notification=True)
+        return result
+
+    def _finish_after_subscribe_old(self, result):
         '''Send new job to newly subscribed client'''
+        log.debug("Mining subscription wallet %s " % self.wallet)
+        log.debug(result)
+        log.debug(self.connection_ref().get_session())
         try:        
             (job_id, prevhash, coinb1, coinb2, merkle_branch, version, nbits, ntime, _) = \
                         Interfaces.template_registries[self.wallet].get_last_broadcast_args()
@@ -66,8 +75,8 @@ class MiningSubscription(Subscription):
         
         # Force client to remove previous jobs if any (eg. from previous connection)
         clean_jobs = True
-        log.debug("Remove previous jobs from previous connection %d " % job_id)
-        self.emit_single(job_id, prevhash, coinb1, coinb2, merkle_branch, version, nbits, ntime, True)
+        log.debug("Remove previous jobs from previous connection %s " % job_id)
+        self.emit_single(job_id, prevhash, coinb1, coinb2, merkle_branch, version, nbits, ntime, clean_jobs)
         
         return result
                 

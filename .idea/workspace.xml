@@ -2,25 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4571199-a8a9-436f-87c8-fade544d8295" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mining/DBInterface.py" afterPath="$PROJECT_DIR$/mining/DBInterface.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mining/DB_Mysql.py" afterPath="$PROJECT_DIR$/mining/DB_Mysql.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mining/DB_Mysql_Extended.py" afterPath="$PROJECT_DIR$/mining/DB_Mysql_Extended.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mining/DB_Mysql_Vardiff.py" afterPath="$PROJECT_DIR$/mining/DB_Mysql_Vardiff.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mining/DB_Sqlite.py" afterPath="$PROJECT_DIR$/mining/DB_Sqlite.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mining/__init__.py" afterPath="$PROJECT_DIR$/mining/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/addlitecoind.sh" afterPath="$PROJECT_DIR$/scripts/addlitecoind.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mining/basic_share_limiter.py" afterPath="$PROJECT_DIR$/mining/basic_share_limiter.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/bitcoin_rpc_manager.py" afterPath="$PROJECT_DIR$/lib/bitcoin_rpc_manager.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/block_updater.py" afterPath="$PROJECT_DIR$/lib/block_updater.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/blocknotify.sh" afterPath="$PROJECT_DIR$/scripts/blocknotify.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/coinbaser.py" afterPath="$PROJECT_DIR$/lib/coinbaser.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/conf/config.py" afterPath="$PROJECT_DIR$/conf/config.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mining/interfaces.py" afterPath="$PROJECT_DIR$/mining/interfaces.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mining/service.py" afterPath="$PROJECT_DIR$/mining/service.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mining/subscription.py" afterPath="$PROJECT_DIR$/mining/subscription.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/template_registry.py" afterPath="$PROJECT_DIR$/lib/template_registry.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/twistd.pid" afterPath="$PROJECT_DIR$/twistd.pid" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mining/work_log_pruner.py" afterPath="$PROJECT_DIR$/mining/work_log_pruner.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="stratum-mining.iws" />
@@ -44,59 +30,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="__init__.py" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/mining/__init__.py">
+      <file leaf-file-name="config_sample.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/conf/config_sample.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="56" selection-start="644" selection-end="644" vertical-scroll-proportion="0.03529412" vertical-offset="360" max-vertical-offset="3060">
-              <folding>
-                <element signature="e#0#33#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bitcoin_rpc.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/bitcoin_rpc.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="20" selection-start="2471" selection-end="2471" vertical-scroll-proportion="0.0" vertical-offset="1180" max-vertical-offset="1998">
-              <folding>
-                <element signature="e#65#90#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="defer.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file:///usr/lib/python2.7/dist-packages/twisted/internet/defer.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1118" column="4" selection-start="41084" selection-end="41084" vertical-scroll-proportion="0.0" vertical-offset="19954" max-vertical-offset="28044">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3582">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="work_log_pruner.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mining/work_log_pruner.py">
+      <file leaf-file-name="config.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/conf/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="20" selection-start="582" selection-end="584" vertical-scroll-proportion="0.0" vertical-offset="214" max-vertical-offset="576">
+            <state line="20" column="55" selection-start="690" selection-end="690" vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="3996">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="launcher.tac" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/launcher.tac">
+      <file leaf-file-name="interfaces.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mining/interfaces.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="23" selection-start="1333" selection-end="1343" vertical-scroll-proportion="0.0" vertical-offset="335" max-vertical-offset="792">
+            <state line="78" column="25" selection-start="2577" selection-end="2577" vertical-scroll-proportion="0.0" vertical-offset="1404" max-vertical-offset="2808">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="subscription.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mining/subscription.py">
+      <file leaf-file-name="DB_Mysql.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mining/DB_Mysql.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="57" column="81" selection-start="2853" selection-end="2853" vertical-scroll-proportion="0.0" vertical-offset="768" max-vertical-offset="1458">
+            <state line="209" column="23" selection-start="6231" selection-end="6231" vertical-scroll-proportion="2.374761" vertical-offset="2466" max-vertical-offset="6714">
               <folding />
             </state>
           </provider>
@@ -105,21 +69,26 @@
       <file leaf-file-name="service.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mining/service.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="108" column="0" selection-start="4432" selection-end="4432" vertical-scroll-proportion="-8.592592" vertical-offset="1712" max-vertical-offset="4266">
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
+            <state line="83" column="86" selection-start="3147" selection-end="3147" vertical-scroll-proportion="0.0" vertical-offset="1494" max-vertical-offset="4338">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="coinbaser.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/coinbaser.py">
+      <file leaf-file-name="client_service.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/externals/stratum-mining-proxy/mining_libs/client_service.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="68" selection-start="3584" selection-end="3584" vertical-scroll-proportion="0.0" vertical-offset="129" max-vertical-offset="1962">
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
+            <state line="79" column="30" selection-start="3031" selection-end="3031" vertical-scroll-proportion="0.0" vertical-offset="1422" max-vertical-offset="2232">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="basic_share_limiter.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mining/basic_share_limiter.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="185" column="37" selection-start="7046" selection-end="7046" vertical-scroll-proportion="0.0" vertical-offset="3330" max-vertical-offset="3582">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -127,17 +96,19 @@
       <file leaf-file-name="template_registry.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/template_registry.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="78" column="39" selection-start="2656" selection-end="2656" vertical-scroll-proportion="0.0" vertical-offset="1830" max-vertical-offset="5742">
+            <state line="78" column="45" selection-start="2648" selection-end="2662" vertical-scroll-proportion="0.0" vertical-offset="1404" max-vertical-offset="5814">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="block_updater.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/block_updater.py">
+      <file leaf-file-name="subscription.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mining/subscription.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="51" column="65" selection-start="1740" selection-end="1740" vertical-scroll-proportion="0.0" vertical-offset="642" max-vertical-offset="1260">
-              <folding />
+            <state line="56" column="41" selection-start="2709" selection-end="2709" vertical-scroll-proportion="0.0" vertical-offset="885" max-vertical-offset="1692">
+              <folding>
+                <element signature="e#0#47#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -160,22 +131,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/scripts/addlitecoind.sh" />
         <option value="$PROJECT_DIR$/mining/DB_Mysql_Vardiff.py" />
         <option value="$PROJECT_DIR$/externals/stratum-mining-proxy/mining_proxy.py" />
         <option value="$PROJECT_DIR$/mining/basic_share_limiter.py" />
         <option value="$PROJECT_DIR$/mining/DBInterface.py" />
         <option value="$PROJECT_DIR$/mining/interfaces.py" />
-        <option value="$PROJECT_DIR$/conf/config.py" />
         <option value="$PROJECT_DIR$/mining/work_log_pruner.py" />
         <option value="$PROJECT_DIR$/lib/block_updater.py" />
         <option value="$PROJECT_DIR$/lib/template_registry.py" />
         <option value="$PROJECT_DIR$/lib/coinbaser.py" />
         <option value="$PROJECT_DIR$/lib/bitcoin_rpc_manager.py" />
-        <option value="$PROJECT_DIR$/mining/subscription.py" />
-        <option value="$PROJECT_DIR$/mining/service.py" />
         <option value="$PROJECT_DIR$/launcher.tac" />
         <option value="$PROJECT_DIR$/mining/__init__.py" />
+        <option value="$PROJECT_DIR$/mining/DB_Mysql.py" />
+        <option value="$PROJECT_DIR$/conf/config.py" />
+        <option value="$PROJECT_DIR$/mining/service.py" />
+        <option value="$PROJECT_DIR$/mining/subscription.py" />
       </list>
     </option>
   </component>
@@ -211,7 +182,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -288,14 +258,15 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -454,12 +425,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-4" width="1217" height="701" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2795139" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25925925" sideWeight="0.7204861" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -470,6 +440,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2795139" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -489,125 +460,105 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="0" selection-start="31" selection-end="31" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="180" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/extranonce_counter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="8" selection-start="942" selection-end="942" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612" />
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python2.7/dist-packages/stratum-0.2.13-py2.7.egg/stratum/pubsub.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="55" column="8" selection-start="2137" selection-end="2137" vertical-scroll-proportion="0.33333334" vertical-offset="766" max-vertical-offset="3222" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mining/DB_Sqlite.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="151" column="8" selection-start="7432" selection-end="7432" vertical-scroll-proportion="0.3323782" vertical-offset="2566" max-vertical-offset="5850" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mining/DBInterface.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="201" column="28" selection-start="6503" selection-end="6503" vertical-scroll-proportion="0.0" vertical-offset="3340" max-vertical-offset="4104">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/externals/stratum/build/lib.linux-x86_64-2.7/stratum/pubsub.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="115" column="29" selection-start="4593" selection-end="4593" vertical-scroll-proportion="0.0" vertical-offset="1630" max-vertical-offset="3222" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/externals/stratum/stratum/pubsub.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="111" column="62" selection-start="4367" selection-end="4367" vertical-scroll-proportion="0.3323782" vertical-offset="1828" max-vertical-offset="3222" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/config_sample.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="3233" max-vertical-offset="3582">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="55" selection-start="690" selection-end="690" vertical-scroll-proportion="0.0" vertical-offset="191" max-vertical-offset="3996">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mining/interfaces.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="8" selection-start="1703" selection-end="1703" vertical-scroll-proportion="0.0" vertical-offset="776" max-vertical-offset="2718">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/blocknotify.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="38" selection-start="1083" selection-end="1083" vertical-scroll-proportion="0.3325688" vertical-offset="323" max-vertical-offset="1026">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/coinbaser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="68" selection-start="3584" selection-end="3584" vertical-scroll-proportion="0.0" vertical-offset="129" max-vertical-offset="1962">
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/externals/stratum-mining-proxy/mining_libs/stratum_listener.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="23" selection-start="1851" selection-end="1851" vertical-scroll-proportion="0.33139536" vertical-offset="696" max-vertical-offset="2970">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/block_template.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="91" column="27" selection-start="3299" selection-end="3313" vertical-scroll-proportion="2.5457413" vertical-offset="831" max-vertical-offset="2916">
-          <folding>
-            <element signature="e#0#15#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/externals/stratum-mining-proxy/mining_libs/jobs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="154" column="38" selection-start="5741" selection-end="5741" vertical-scroll-proportion="1.2732558" vertical-offset="2154" max-vertical-offset="4428">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/block_updater.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="51" column="65" selection-start="1740" selection-end="1740" vertical-scroll-proportion="0.0" vertical-offset="642" max-vertical-offset="1260">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/template_registry.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="78" column="39" selection-start="2656" selection-end="2656" vertical-scroll-proportion="0.0" vertical-offset="1128" max-vertical-offset="5742">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/bitcoin_rpc_manager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="118" column="61" selection-start="4815" selection-end="4815" vertical-scroll-proportion="0.48710603" vertical-offset="1828" max-vertical-offset="2556">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mining/subscription.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="81" selection-start="2853" selection-end="2853" vertical-scroll-proportion="0.0" vertical-offset="768" max-vertical-offset="1458">
+        <state line="78" column="25" selection-start="2577" selection-end="2577" vertical-scroll-proportion="0.0" vertical-offset="1001" max-vertical-offset="2718">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mining/service.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="108" column="0" selection-start="4432" selection-end="4432" vertical-scroll-proportion="-8.592592" vertical-offset="1712" max-vertical-offset="4266">
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mining/work_log_pruner.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="20" selection-start="582" selection-end="584" vertical-scroll-proportion="0.0" vertical-offset="214" max-vertical-offset="576">
+        <state line="83" column="86" selection-start="3147" selection-end="3147" vertical-scroll-proportion="0.0" vertical-offset="1494" max-vertical-offset="4338">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/lib/python2.7/dist-packages/twisted/internet/defer.py">
+    <entry file="file://$PROJECT_DIR$/externals/stratum-mining-proxy/mining_libs/client_service.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1118" column="4" selection-start="41084" selection-end="41084" vertical-scroll-proportion="0.0" vertical-offset="19954" max-vertical-offset="28044">
+        <state line="79" column="30" selection-start="3031" selection-end="3031" vertical-scroll-proportion="0.0" vertical-offset="1216" max-vertical-offset="2142">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/bitcoin_rpc.py">
+    <entry file="file://$PROJECT_DIR$/mining/basic_share_limiter.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="20" selection-start="2471" selection-end="2471" vertical-scroll-proportion="0.0" vertical-offset="1180" max-vertical-offset="1998">
-          <folding>
-            <element signature="e#65#90#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/launcher.tac">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="23" selection-start="1333" selection-end="1343" vertical-scroll-proportion="0.0" vertical-offset="335" max-vertical-offset="792">
+        <state line="185" column="37" selection-start="7046" selection-end="7046" vertical-scroll-proportion="0.0" vertical-offset="3197" max-vertical-offset="3546">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mining/__init__.py">
+    <entry file="file://$PROJECT_DIR$/lib/template_registry.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="56" selection-start="644" selection-end="644" vertical-scroll-proportion="0.03529412" vertical-offset="360" max-vertical-offset="3060">
+        <state line="78" column="45" selection-start="2648" selection-end="2662" vertical-scroll-proportion="0.0" vertical-offset="1144" max-vertical-offset="5742">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mining/subscription.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="41" selection-start="2709" selection-end="2709" vertical-scroll-proportion="0.0" vertical-offset="885" max-vertical-offset="1692">
           <folding>
-            <element signature="e#0#33#0" expanded="true" />
+            <element signature="e#0#47#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mining/DB_Mysql.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="209" column="23" selection-start="6231" selection-end="6231" vertical-scroll-proportion="2.374761" vertical-offset="2466" max-vertical-offset="6714">
+          <folding />
         </state>
       </provider>
     </entry>

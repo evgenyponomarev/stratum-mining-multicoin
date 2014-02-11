@@ -206,6 +206,8 @@ class DB_Mysql():
         )
         
         user = self.dbc.fetchone()
+        log.debug("Worker found")
+        log.debug(user)
         return user
         
 
