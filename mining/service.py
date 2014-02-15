@@ -108,8 +108,7 @@ class MiningService(GenericService):
 
         session = self.connection_ref().get_session()
 
-        #registry = Interfaces.template_registries[Interfaces.template_registries.keys()[0]]
-        registry = Interfaces.template_registries['ALC']
+        registry = Interfaces.template_registries[Interfaces.template_registries.keys()[0]]
         extranonce1 = registry.get_new_extranonce1()
         extranonce2_size = registry.extranonce2_size
         extranonce1_hex = binascii.hexlify(extranonce1)
