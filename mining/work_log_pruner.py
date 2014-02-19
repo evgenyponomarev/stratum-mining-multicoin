@@ -12,7 +12,6 @@ def _WorkLogPruner_I(wl):
         userwork = wl[username]
         for wli in tuple(userwork.keys()):
             if now > userwork[wli][2] + 120:
-                log.debug("DELETING userwork:")
                 log.debug(userwork[wli])
                 del userwork[wli]
                 pruned += 1

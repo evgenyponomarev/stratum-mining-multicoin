@@ -149,7 +149,6 @@ class MiningService(GenericService):
             job_ts = Interfaces.timestamper.time()
             Interfaces.worker_manager.job_log.setdefault(worker_name, {})[work_id] = (work_id, difficulty, job_ts)
             job_id = work_id
-        log.debug("worker_job_log: %s" % repr(Interfaces.worker_manager.job_log))
 
         submit_time = Interfaces.timestamper.time()
         ip = self.connection_ref()._get_ip()

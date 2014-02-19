@@ -41,8 +41,6 @@ class MiningSubscription(Subscription):
                             log.debug("authorized, wallet %s JOB ID %s" % (wallet, job_id))
                             log.debug("WORK ID %s" % work_id)
                             subscription.emit_single(work_id, prevhash, coinb1, coinb2, merkle_branch, version, nbits, ntime, clean_jobs)
-                        else:
-                            log.debug("worker %s has wallet %s, but we update %s" % (worker_name, worker_wallet, wallet))
                     else:
                         log.debug("Not authorized, JOB ID %s" % job_id)
                         subscription.emit_single(job_id, prevhash, coinb1, coinb2, merkle_branch, version, nbits, ntime, clean_jobs)
