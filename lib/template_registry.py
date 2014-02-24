@@ -4,14 +4,15 @@ import util
 import StringIO
 import settings
 
-if settings.COINDAEMON_ALGO == 'scrypt':
-    import ltc_scrypt
-elif settings.COINDAEMON_ALGO == 'scrypt-jane':
-    import yac_scrypt
-elif settings.COINDAEMON_ALGO == 'quark':
-    import quark_hash
-else:
-    pass
+#if settings.COINDAEMON_ALGO == 'scrypt':
+import ltc_scrypt
+#elif settings.COINDAEMON_ALGO == 'scrypt-jane':
+import yac_scrypt
+
+#elif settings.COINDAEMON_ALGO == 'quark':
+#    import quark_hash
+#else:
+#    pass
 from twisted.internet import defer
 from lib.exceptions import SubmitException
 
@@ -242,14 +243,17 @@ class TemplateRegistry(object):
         header_bin = job.serialize_header(merkle_root_int, ntime_bin, nonce_bin)
 
         # 4. Reverse header and compare it with target of the user
-        if settings.COINDAEMON_ALGO == 'scrypt':
+        if settings.COINDAEMON_ALGO == 'scrypt' and self.wallet != 'THOR':
+            #log.info("SCRYPT WALLET %s" % self.wallet)
             hash_bin = ltc_scrypt.getPoWHash(''.join([header_bin[i * 4:i * 4 + 4][::-1] for i in range(0, 20)]))
-        elif settings.COINDAEMON_ALGO == 'scrypt-jane':
+        elif settings.COINDAEMON_ALGO == 'scrypt-jane' or self.wallet == 'THOR':
+            #log.info("SCRYPT JANE WALLET %s" % self.wallet)
             hash_bin = yac_scrypt.getPoWHash(''.join([header_bin[i * 4:i * 4 + 4][::-1] for i in range(0, 20)]),
                                              int(ntime, 16))
         elif settings.COINDAEMON_ALGO == 'quark':
             hash_bin = quark_hash.getPoWHash(''.join([header_bin[i * 4:i * 4 + 4][::-1] for i in range(0, 20)]))
         else:
+            #log.info("ELSE WALLET %s" % self.wallet);
             hash_bin = util.doublesha(''.join([header_bin[i * 4:i * 4 + 4][::-1] for i in range(0, 20)]))
         hash_int = util.uint256_from_str(hash_bin)
         scrypt_hash_hex = "%064x" % hash_int

@@ -25,6 +25,15 @@ COINDAEMON_WALLETS = {
             'user': 'alcohoinrpc',
             'password': '8Wbbi6ExSWujz3ByGz8LGqDWehaGXw8EEcJCtWNceyCG'
         }]
+    },
+    'THOR': {
+        'wallet': 'TWyJbM2dMjcQG5TJM8z5FquScvRdzhVsns',
+        'hosts': [{
+            'host': 'localhost',
+            'port': 29551,
+            'user': 'thorcoinrpc',
+            'password': '33xaw8cZU5AtdN6vrmaVfnEUmUhKRg5CrqxxoeNi5gmA'
+        }]
     }
     #,
     #'LTC': {
